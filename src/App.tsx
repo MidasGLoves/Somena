@@ -14,24 +14,16 @@ const COURSES = [
 const ordinals = ['1st','2nd','3rd','4th'];
 
 const PREVIEW_IMAGES = [
-  "https://i.postimg.cc/cgfNd2Gn/Screenshot-2026-04-16-115210.png",
-  "https://i.postimg.cc/JHmC0xRb/Screenshot-2026-04-16-115235.png",
-  "https://i.postimg.cc/V01Pvgz4/Screenshot-2026-04-16-115255.png",
-  "https://i.postimg.cc/8fDgc4TH/Screenshot-2026-04-16-115310.png",
-  "https://i.postimg.cc/D4F3067r/Screenshot-2026-04-16-115326.png",
-  "https://i.postimg.cc/tnyGJk9r/Screenshot-2026-04-16-115338.png",
-  "https://i.postimg.cc/rRc2sjqf/Screenshot-2026-04-16-122152.png",
-  "https://i.postimg.cc/D4F3067p/Screenshot-2026-04-16-122220.png",
-  "https://i.postimg.cc/T5Gv10TH/Screenshot-2026-04-16-122242.png",
-  "https://i.postimg.cc/D4gkXGzP/Screenshot-2026-04-16-122311.png",
-  "https://i.postimg.cc/m1wfH9rS/Screenshot-2026-04-16-122329.png",
-  "https://i.postimg.cc/kRc3bS5s/Screenshot-2026-04-16-122349.png",
-  "https://i.postimg.cc/gLDFZh0g/Screenshot-2026-04-16-122412.png",
-  "https://i.postimg.cc/30B5vGwS/Screenshot-2026-04-16-122451.png",
-  "https://i.postimg.cc/hQrWdmGZ/Screenshot-2026-04-16-122508.png",
-  "https://i.postimg.cc/ctmyn3J5/Screenshot-2026-04-16-122534.png",
-  "https://i.postimg.cc/zHjZghfM/Screenshot-2026-04-16-122555.png",
-  "https://i.postimg.cc/p5ZbFjd3/Screenshot-2026-04-16-134325.png"
+  "https://i.imgur.com/M7FYL8F.png",
+  "https://i.imgur.com/CXDa8N2.png",
+  "https://i.imgur.com/dxn97VY.png",
+  "https://i.imgur.com/CPqUGJb.png",
+  "https://i.imgur.com/KbVFx4l.png",
+  "https://i.imgur.com/GEZMfe0.png",
+  "https://i.imgur.com/m6f6KWF.png",
+  "https://i.imgur.com/UnyMv66.png",
+  "https://i.imgur.com/V6yGT1L.png",
+  "https://i.imgur.com/Cw1FgaA.png"
 ];
 
 function SecretPage({ onBack }: { onBack: () => void }) {
