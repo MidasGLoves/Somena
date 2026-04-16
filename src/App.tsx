@@ -13,6 +13,27 @@ const COURSES = [
 
 const ordinals = ['1st','2nd','3rd','4th'];
 
+const PREVIEW_IMAGES = [
+  "https://i.postimg.cc/cgfNd2Gn/Screenshot-2026-04-16-115210.png",
+  "https://i.postimg.cc/JHmC0xRb/Screenshot-2026-04-16-115235.png",
+  "https://i.postimg.cc/V01Pvgz4/Screenshot-2026-04-16-115255.png",
+  "https://i.postimg.cc/8fDgc4TH/Screenshot-2026-04-16-115310.png",
+  "https://i.postimg.cc/D4F3067r/Screenshot-2026-04-16-115326.png",
+  "https://i.postimg.cc/tnyGJk9r/Screenshot-2026-04-16-115338.png",
+  "https://i.postimg.cc/rRc2sjqf/Screenshot-2026-04-16-122152.png",
+  "https://i.postimg.cc/D4F3067p/Screenshot-2026-04-16-122220.png",
+  "https://i.postimg.cc/T5Gv10TH/Screenshot-2026-04-16-122242.png",
+  "https://i.postimg.cc/D4gkXGzP/Screenshot-2026-04-16-122311.png",
+  "https://i.postimg.cc/m1wfH9rS/Screenshot-2026-04-16-122329.png",
+  "https://i.postimg.cc/kRc3bS5s/Screenshot-2026-04-16-122349.png",
+  "https://i.postimg.cc/gLDFZh0g/Screenshot-2026-04-16-122412.png",
+  "https://i.postimg.cc/30B5vGwS/Screenshot-2026-04-16-122451.png",
+  "https://i.postimg.cc/hQrWdmGZ/Screenshot-2026-04-16-122508.png",
+  "https://i.postimg.cc/ctmyn3J5/Screenshot-2026-04-16-122534.png",
+  "https://i.postimg.cc/zHjZghfM/Screenshot-2026-04-16-122555.png",
+  "https://i.postimg.cc/p5ZbFjd3/Screenshot-2026-04-16-134325.png"
+];
+
 function SecretPage({ onBack }: { onBack: () => void }) {
   const codes = JSON.parse(localStorage.getItem('refCodes') || '[]');
 
@@ -53,6 +74,8 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
   const [isVerifying, setIsVerifying] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
   const [verifyCountdown, setVerifyCountdown] = useState(9);
+  const [isGalleryExpanded, setIsGalleryExpanded] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const totalAmount = 5;
 
@@ -164,24 +187,16 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
         <p style={{ fontSize: '18px', color: '#64748b', marginBottom: '40px', maxWidth: '600px', margin: '0 auto 40px auto' }}>Take a look at the high-quality, easy-to-read format of our nursing guide.</p>
         
         <div className="preview-gallery" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', justifyContent: 'center', maxWidth: '1200px', margin: '0 auto' }}>
-          <img src="https://i.postimg.cc/cgfNd2Gn/Screenshot-2026-04-16-115210.png" alt="Sneak Peek 1" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/JHmC0xRb/Screenshot-2026-04-16-115235.png" alt="Sneak Peek 2" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/V01Pvgz4/Screenshot-2026-04-16-115255.png" alt="Sneak Peek 3" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/8fDgc4TH/Screenshot-2026-04-16-115310.png" alt="Sneak Peek 4" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/D4F3067r/Screenshot-2026-04-16-115326.png" alt="Sneak Peek 5" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/tnyGJk9r/Screenshot-2026-04-16-115338.png" alt="Sneak Peek 6" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/rRc2sjqf/Screenshot-2026-04-16-122152.png" alt="Sneak Peek 7" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/D4F3067p/Screenshot-2026-04-16-122220.png" alt="Sneak Peek 8" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/T5Gv10TH/Screenshot-2026-04-16-122242.png" alt="Sneak Peek 9" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/D4gkXGzP/Screenshot-2026-04-16-122311.png" alt="Sneak Peek 10" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/m1wfH9rS/Screenshot-2026-04-16-122329.png" alt="Sneak Peek 11" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/kRc3bS5s/Screenshot-2026-04-16-122349.png" alt="Sneak Peek 12" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/gLDFZh0g/Screenshot-2026-04-16-122412.png" alt="Sneak Peek 13" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/30B5vGwS/Screenshot-2026-04-16-122451.png" alt="Sneak Peek 14" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/hQrWdmGZ/Screenshot-2026-04-16-122508.png" alt="Sneak Peek 15" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/ctmyn3J5/Screenshot-2026-04-16-122534.png" alt="Sneak Peek 16" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/zHjZghfM/Screenshot-2026-04-16-122555.png" alt="Sneak Peek 17" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
-          <img src="https://i.postimg.cc/p5ZbFjd3/Screenshot-2026-04-16-134325.png" alt="Sneak Peek 18" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          {(isGalleryExpanded ? PREVIEW_IMAGES : PREVIEW_IMAGES.slice(0, 6)).map((src, idx) => (
+            <div key={idx} style={{ cursor: 'pointer', overflow: 'hidden', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} onClick={() => setLightboxImage(src)}>
+              <img src={src} alt={`Sneak Peek ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.3s ease' }} referrerPolicy="no-referrer" onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'} />
+            </div>
+          ))}
+        </div>
+        <div style={{ textAlign: 'center', marginTop: '30px' }}>
+          <button onClick={() => setIsGalleryExpanded(!isGalleryExpanded)} style={{ padding: '12px 28px', fontSize: '16px', fontWeight: 600, color: '#0f172a', background: '#e2e8f0', border: 'none', borderRadius: '8px', cursor: 'pointer', transition: 'background 0.2s' }} onMouseOver={(e) => e.currentTarget.style.background = '#cbd5e1'} onMouseOut={(e) => e.currentTarget.style.background = '#e2e8f0'}>
+            {isGalleryExpanded ? 'Show Less' : `Show All ${PREVIEW_IMAGES.length} Pages`}
+          </button>
         </div>
       </div>
 
@@ -362,6 +377,13 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
           </div>
         </div>
       </div>
+      {/* LIGHTBOX */}
+      {lightboxImage && (
+        <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.9)', zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'zoom-out' }} onClick={() => setLightboxImage(null)}>
+          <img src={lightboxImage} alt="Expanded Preview" style={{ maxWidth: '90%', maxHeight: '90%', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} referrerPolicy="no-referrer" />
+          <button style={{ position: 'absolute', top: '20px', right: '30px', background: 'transparent', border: 'none', color: 'white', fontSize: '40px', cursor: 'pointer' }} onClick={() => setLightboxImage(null)}>×</button>
+        </div>
+      )}
     </>
   );
 }
