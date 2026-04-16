@@ -216,57 +216,38 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
         <div className="courses-inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
           <div className="section-label">Nursing Curriculum</div>
           <div className="section-title">Get The Complete Guide.<br/>All 4 Years Included.</div>
-          <p className="section-sub" style={{marginTop:'12px', maxWidth: '600px'}}>👆 Tap any year pill to preview all subjects inside. Get the complete 4-year curriculum for only ₱5.</p>
+          <p className="section-sub" style={{marginTop:'12px', maxWidth: '600px'}}>Get the complete 4-year curriculum for only ₱5.</p>
           
-          <div className="courses-grid" style={{ display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '800px' }}>
+          <div className="courses-grid" style={{ display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '1200px' }}>
             {COURSES.map((c, ci) => (
-              <div key={ci} className="course-card" style={{ width: '100%' }}>
+              <div key={ci} className="course-card" style={{ width: '100%', textAlign: 'left' }}>
                 <div className="course-card-top">
                   <div className="course-name">{c.name}</div>
                   <div className="course-tag" style={{background:c.bg, color:c.color}}>{c.tag}</div>
                 </div>
                 <div className="course-card-body">
-                  <div className="years-hint">👆 Tap a year to preview all subjects inside</div>
-                  <div className="years-row" style={{ justifyContent: 'center', gap: '12px', marginBottom: '20px' }}>
-                    {c.years.map((yr, yi) => {
-                      const id = `${ci}-${yi}`;
-                      const isActive = activeDrawer === id;
-                      return (
-                        <div key={yi} className={`year-pill ${isActive ? 'active' : ''}`} style={{color:c.color, padding: '8px 16px', fontSize: '14px'}} onClick={() => toggleDrawer(id)}>
-                          <span>{ordinals[yi]} Yr</span>
-                          <span className="toggle-arrow">▾</span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                  
-                  {c.years.map((yr, yi) => {
-                    const id = `${ci}-${yi}`;
-                    const isActive = activeDrawer === id;
-                    return (
-                      <div key={yi} className={`lesson-drawer ${isActive ? 'open' : ''}`} style={{borderColor:`${c.color}40`}}>
-                        <div className="drawer-header" style={{background:c.bg}}>
-                          <span className="drawer-year-label" style={{color:c.color}}>{yr.label}</span>
-                          <button className="drawer-buy-btn" onClick={(e) => { e.stopPropagation(); openModal(c.name, '4'); }}>Get Full Guide ₱5 →</button>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', alignItems: 'start' }}>
+                    {c.years.map((yr, yi) => (
+                      <div key={yi} style={{ border: `1px solid ${c.color}40`, borderRadius: '10px', overflow: 'hidden', background: '#f8fafc' }}>
+                        <div style={{background:c.bg, padding: '12px 16px', borderBottom: `1px solid ${c.color}20` }}>
+                          <span style={{color:c.color, fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.04em'}}>{yr.label}</span>
                         </div>
                         {yr.sems.map((sem, si) => (
-                          <div key={si} className="sem-block">
-                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                              <div className="sem-title" style={{ marginBottom: 0 }}>{sem.s}</div>
-                            </div>
+                          <div key={si} style={{ padding: '12px 16px' }}>
+                            <div style={{ fontSize: '11px', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '10px', paddingBottom: '6px', borderBottom: '1px dashed #cbd5e1' }}>{sem.s}</div>
                             {sem.l.map((lesson, li) => (
-                              <div key={li} className="lesson-row">
-                                <div className="lesson-dot" style={{background:`${c.color}88`}}></div>
+                              <div key={li} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '8px', fontSize: '13px', lineHeight: '1.4', color: '#334155' }}>
+                                <div style={{ background:`${c.color}88`, width: '5px', height: '5px', borderRadius: '50%', marginTop: '6px', flexShrink: 0 }}></div>
                                 <span>{lesson}</span>
                               </div>
                             ))}
                           </div>
                         ))}
                       </div>
-                    );
-                  })}
+                    ))}
+                  </div>
                   
-                  <div className="course-card-footer" style={{ marginTop: '20px', paddingTop: '20px' }}>
+                  <div className="course-card-footer" style={{ marginTop: '24px', paddingTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div className="total-price" style={{ fontSize: '15px' }}>Complete 4-year guide: <strong style={{ fontSize: '18px' }}>₱5</strong></div>
                     <button className="buy-all-btn" style={{ padding: '12px 24px', fontSize: '15px' }} onClick={() => openModal(c.name, '4')}>Get Complete Guide →</button>
                   </div>
