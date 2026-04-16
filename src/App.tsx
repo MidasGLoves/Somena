@@ -318,7 +318,8 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
             {isVerified && (
               <button className="modal-pay-btn" style={{ background: '#10b981' }} onClick={() => { 
                 const link = document.createElement('a');
-                link.href = 'https://www.mediafire.com/file/abu0foq241s65yu/Nursing.zip/file';
+                // Permanent GitHub Release Link
+                link.href = 'https://github.com/MidasGLoves/NURSE/releases/download/v1.0/Nursing.zip';
                 link.setAttribute('download', 'Nursing.zip');
                 document.body.appendChild(link);
                 link.click();
