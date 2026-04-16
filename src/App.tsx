@@ -316,7 +316,15 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
             )}
 
             {isVerified && (
-              <button className="modal-pay-btn" style={{ background: '#10b981' }} onClick={() => { window.open('https://www.mediafire.com/file/abu0foq241s65yu/Nursing.zip/file', '_blank'); closeModal(); }}>
+              <button className="modal-pay-btn" style={{ background: '#10b981' }} onClick={() => { 
+                const link = document.createElement('a');
+                link.href = 'https://www.mediafire.com/file/abu0foq241s65yu/Nursing.zip/file';
+                link.setAttribute('download', 'Nursing.zip');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                closeModal(); 
+              }}>
                 ⬇ DOWNLOAD PDF NOW
               </button>
             )}
