@@ -68,6 +68,20 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
   const [verifyCountdown, setVerifyCountdown] = useState(9);
   const [isGalleryExpanded, setIsGalleryExpanded] = useState(false);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [isAtBottom, setIsAtBottom] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if user is near the bottom of the page (within 100px)
+      const bottom = Math.ceil(window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 100;
+      setIsAtBottom(bottom);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const totalAmount = 5;
 
@@ -386,6 +400,13 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', background: 'rgba(0,0,0,0.9)', zIndex: 100000, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'zoom-out' }} onClick={() => setLightboxImage(null)}>
           <img src={lightboxImage} alt="Expanded Preview" style={{ maxWidth: '90%', maxHeight: '90%', objectFit: 'contain', borderRadius: '8px', boxShadow: '0 20px 50px rgba(0,0,0,0.5)' }} referrerPolicy="no-referrer" />
           <button style={{ position: 'absolute', top: '20px', right: '30px', background: 'transparent', border: 'none', color: 'white', fontSize: '40px', cursor: 'pointer' }} onClick={() => setLightboxImage(null)}>×</button>
+        </div>
+      )}
+
+      {/* SCROLL INDICATOR */}
+      {!isAtBottom && (
+        <div className="scroll-indicator">
+          SCROLL FOR MORE <span style={{ fontSize: '18px', lineHeight: 1 }}>↓</span>
         </div>
       )}
     </>
