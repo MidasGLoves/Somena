@@ -319,8 +319,9 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
               <button className="modal-pay-btn" style={{ background: '#10b981' }} onClick={() => { 
                 const link = document.createElement('a');
                 // Permanent GitHub Release Link
-                link.href = 'https://github.com/MidasGLoves/NURSE/releases/download/v1.0/Nursing.zip';
+                link.href = 'https://github.com/MidasGLoves/NURSE/releases/download/V1.0/Nursing.zip';
                 link.setAttribute('download', 'Nursing.zip');
+                link.setAttribute('target', '_blank'); // Add target blank as a fallback
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
