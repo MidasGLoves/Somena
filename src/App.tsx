@@ -175,7 +175,6 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
           <div className="hero-card-note">One-time payment for the complete 4-year guide</div>
           <hr className="hero-card-divider"/>
           <ul className="hero-card-features">
-            <li>All major subjects per semester</li>
             <li>Optimized for quick learning & exams</li>
             <li>Clinical duty &amp; internship guide</li>
             <li>Subject descriptions &amp; goals</li>
@@ -210,7 +209,6 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
         <div className="why-inner">
           <div className="why-item"><div className="why-num">100%</div><div className="why-title">Nursing Focused</div><div className="why-desc">Tailored specifically for Nursing students.</div></div>
           <div className="why-item"><div className="why-num">₱5</div><div className="why-title">Full Access</div><div className="why-desc">That's cheaper than a single textbook. Get the entire 4-year breakdown for just five pesos.</div></div>
-          <div className="why-item"><div className="why-num">2sec</div><div className="why-title">Instant Download</div><div className="why-desc">Pay and receive your PDF immediately. No waiting, no shipping, no hassle. Available 24/7.</div></div>
         </div>
       </div>
 
