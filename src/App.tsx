@@ -54,7 +54,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
   const [isVerified, setIsVerified] = useState(false);
   const [verifyCountdown, setVerifyCountdown] = useState(9);
 
-  const totalAmount = 19;
+  const totalAmount = 5;
 
   const toggleDrawer = (id: string) => {
     setActiveDrawer(prev => prev === id ? null : id);
@@ -120,13 +120,13 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
 
       <nav>
         <div className="nav-logo">MedGuide</div>
-        <button className="nav-cta" onClick={() => openModal()}>Get My Guide — ₱19</button>
+        <button className="nav-cta" onClick={() => openModal()}>Get My Guide — ₱5</button>
       </nav>
 
       <div className="hero">
         <div>
           <div className="hero-badge">The most comprehensive nursing study guide</div>
-          <h1>STOP<br/>GUESSING<br/>YOUR <span className="accent" style={{color: '#ef4444'}}>NURSING</span><br/>JOURNEY FOR <span className="price-inline">₱19</span></h1>
+          <h1>STOP<br/>GUESSING<br/>YOUR <span className="accent" style={{color: '#ef4444'}}>NURSING</span><br/>JOURNEY FOR <span className="price-inline">₱5</span></h1>
           <p className="hero-sub">Get the <strong>complete semester-by-semester lesson guide</strong> for Nursing. Know exactly what to expect — from 1st year to your Board Exam.</p>
           <p className="hero-sub" style={{color: '#10b981', fontWeight: 600, marginTop: '-20px'}}>⚡ Highly optimized for quick learning in a short period of time. Perfect for your exam preparations!</p>
           <div className="hero-actions">
@@ -142,7 +142,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
         </div>
         <div className="hero-card">
           <div className="hero-card-label">What you get inside</div>
-          <div className="hero-card-price"><sub>₱</sub>19<sub style={{fontSize:'18px',opacity:0.5}}>/complete</sub></div>
+          <div className="hero-card-price"><sub>₱</sub>5<sub style={{fontSize:'18px',opacity:0.5}}>/complete</sub></div>
           <div className="hero-card-note">One-time payment for the complete 4-year guide</div>
           <hr className="hero-card-divider"/>
           <ul className="hero-card-features">
@@ -155,6 +155,28 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
             <li>Universally accepted curriculum (Nationwide & Worldwide)</li>
           </ul>
           <button className="hero-card-btn" onClick={() => openModal()}>GET THE COMPLETE GUIDE →</button>
+        </div>
+      </div>
+
+      {/* PDF Preview Section Placeholder */}
+      <div className="preview-section" style={{ padding: '60px 20px', textAlign: 'center', background: '#f8fafc' }}>
+        <h2 style={{ fontSize: '32px', fontWeight: 800, color: '#0f172a', marginBottom: '10px' }}>Sneak Peek Inside</h2>
+        <p style={{ fontSize: '18px', color: '#64748b', marginBottom: '40px', maxWidth: '600px', margin: '0 auto 40px auto' }}>Take a look at the high-quality, easy-to-read format of our nursing guide.</p>
+        
+        <div className="preview-gallery" style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap', maxWidth: '1200px', margin: '0 auto' }}>
+          {/* Placeholder images - we will replace these with real images later */}
+          <div style={{ width: '400px', height: '225px', background: '#e2e8f0', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
+            <span style={{ padding: '20px' }}>Upload your image to the <b>public</b> folder and tell me the name!</span>
+          </div>
+          <div style={{ width: '400px', height: '225px', background: '#e2e8f0', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
+            <span style={{ padding: '20px' }}>Upload your image to the <b>public</b> folder and tell me the name!</span>
+          </div>
+          <div style={{ width: '400px', height: '225px', background: '#e2e8f0', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
+            <span style={{ padding: '20px' }}>Upload your image to the <b>public</b> folder and tell me the name!</span>
+          </div>
+          <div style={{ width: '400px', height: '225px', background: '#e2e8f0', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
+            <span style={{ padding: '20px' }}>Upload your image to the <b>public</b> folder and tell me the name!</span>
+          </div>
         </div>
       </div>
 
@@ -221,7 +243,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
                   })}
                   
                   <div className="course-card-footer" style={{ marginTop: '20px', paddingTop: '20px' }}>
-                    <div className="total-price" style={{ fontSize: '15px' }}>Complete 4-year guide: <strong style={{ fontSize: '18px' }}>₱19</strong></div>
+                    <div className="total-price" style={{ fontSize: '15px' }}>Complete 4-year guide: <strong style={{ fontSize: '18px' }}>₱5</strong></div>
                     <button className="buy-all-btn" style={{ padding: '12px 24px', fontSize: '15px' }} onClick={() => openModal(c.name, '4')}>Get Complete Guide →</button>
                   </div>
                 </div>
