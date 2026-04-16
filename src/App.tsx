@@ -114,7 +114,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
     <>
       <div className="ticker">
         <div className="ticker-track">
-          <span>✦ ONLY ₱19 FOR ALL 4 YEARS</span><span>✦ INSTANT PDF DOWNLOAD</span><span>✦ NURSING CURRICULUM</span><span>✦ UNIVERSALLY ACCEPTED CURRICULUM</span><span>✦ BOARD EXAM READY</span><span>✦ OVER 10,000 STUDENTS SERVED</span><span>✦ ONLY ₱19 FOR ALL 4 YEARS</span><span>✦ INSTANT PDF DOWNLOAD</span><span>✦ NURSING CURRICULUM</span><span>✦ UNIVERSALLY ACCEPTED CURRICULUM</span><span>✦ BOARD EXAM READY</span><span>✦ OVER 10,000 STUDENTS SERVED</span>
+          <span>✦ ONLY ₱5 FOR ALL 4 YEARS</span><span>✦ INSTANT PDF DOWNLOAD</span><span>✦ NURSING CURRICULUM</span><span>✦ UNIVERSALLY ACCEPTED CURRICULUM</span><span>✦ BOARD EXAM READY</span><span>✦ OVER 10,000 STUDENTS SERVED</span><span>✦ ONLY ₱5 FOR ALL 4 YEARS</span><span>✦ INSTANT PDF DOWNLOAD</span><span>✦ NURSING CURRICULUM</span><span>✦ UNIVERSALLY ACCEPTED CURRICULUM</span><span>✦ BOARD EXAM READY</span><span>✦ OVER 10,000 STUDENTS SERVED</span>
         </div>
       </div>
 
@@ -183,7 +183,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
       <div className="why-strip">
         <div className="why-inner">
           <div className="why-item"><div className="why-num">100%</div><div className="why-title">Nursing Focused</div><div className="why-desc">Tailored specifically for Nursing students.</div></div>
-          <div className="why-item"><div className="why-num">₱19</div><div className="why-title">Full Access</div><div className="why-desc">That's cheaper than a single textbook. Get the entire 4-year breakdown for just nineteen pesos.</div></div>
+          <div className="why-item"><div className="why-num">₱5</div><div className="why-title">Full Access</div><div className="why-desc">That's cheaper than a single textbook. Get the entire 4-year breakdown for just five pesos.</div></div>
           <div className="why-item"><div className="why-num">2sec</div><div className="why-title">Instant Download</div><div className="why-desc">Pay and receive your PDF immediately. No waiting, no shipping, no hassle. Available 24/7.</div></div>
         </div>
       </div>
@@ -192,7 +192,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
         <div className="courses-inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
           <div className="section-label">Nursing Curriculum</div>
           <div className="section-title">Get The Complete Guide.<br/>All 4 Years Included.</div>
-          <p className="section-sub" style={{marginTop:'12px', maxWidth: '600px'}}>👆 Tap any year pill to preview all subjects inside. Get the complete 4-year curriculum for only ₱19.</p>
+          <p className="section-sub" style={{marginTop:'12px', maxWidth: '600px'}}>👆 Tap any year pill to preview all subjects inside. Get the complete 4-year curriculum for only ₱5.</p>
           
           <div className="courses-grid" style={{ display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '800px' }}>
             {COURSES.map((c, ci) => (
@@ -223,7 +223,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
                       <div key={yi} className={`lesson-drawer ${isActive ? 'open' : ''}`} style={{borderColor:`${c.color}40`}}>
                         <div className="drawer-header" style={{background:c.bg}}>
                           <span className="drawer-year-label" style={{color:c.color}}>{yr.label}</span>
-                          <button className="drawer-buy-btn" onClick={(e) => { e.stopPropagation(); openModal(c.name, '4'); }}>Get Full Guide ₱19 →</button>
+                          <button className="drawer-buy-btn" onClick={(e) => { e.stopPropagation(); openModal(c.name, '4'); }}>Get Full Guide ₱5 →</button>
                         </div>
                         {yr.sems.map((sem, si) => (
                           <div key={si} className="sem-block">
@@ -258,8 +258,8 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
           <div className="section-label">The Process</div>
           <div className="section-title">Simple. Fast. Done.</div>
           <div className="how-steps">
-            <div className="how-step"><div className="step-num">01</div><div className="step-title">Get the guide</div><div className="step-desc">Get the complete 4-year nursing curriculum guide for a one-time payment of ₱19.</div></div>
-            <div className="how-step"><div className="step-num">02</div><div className="step-title">Complete your ₱19 payment</div><div className="step-desc">Pay via GCash. Secure, instant, and officially receipted.</div></div>
+            <div className="how-step"><div className="step-num">01</div><div className="step-title">Get the guide</div><div className="step-desc">Get the complete 4-year nursing curriculum guide for a one-time payment of ₱5.</div></div>
+            <div className="how-step"><div className="step-num">02</div><div className="step-title">Complete your ₱5 payment</div><div className="step-desc">Pay via GCash. Secure, instant, and officially receipted.</div></div>
             <div className="how-step"><div className="step-num">03</div><div className="step-title">Receive your PDF instantly</div><div className="step-desc">Download your complete curriculum guide immediately after payment. Print it or keep it on your phone.</div></div>
           </div>
         </div>
@@ -278,16 +278,16 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
         <div className="section-label">Student Reviews</div>
         <div className="section-title">Real Feedback.<br/>Real Students.</div>
         <div className="testi-grid">
-          <div className="testi-card"><div className="testi-stars">★★★★★</div><p className="testi-text">"I haven't even started classes yet, but I already have my entire curriculum planned out. The layout is beautiful and easy to read. Only ₱19?! Incredibly worth it!"</p><div className="testi-author"><div className="testi-avatar" style={{background:'#e74c3c'}}>JR</div><div><div className="testi-name">Jessa Reyes</div><div className="testi-role">BS Nursing, 1st Year</div></div></div></div>
+          <div className="testi-card"><div className="testi-stars">★★★★★</div><p className="testi-text">"I haven't even started classes yet, but I already have my entire curriculum planned out. The layout is beautiful and easy to read. Only ₱5?! Incredibly worth it!"</p><div className="testi-author"><div className="testi-avatar" style={{background:'#e74c3c'}}>JR</div><div><div className="testi-name">Jessa Reyes</div><div className="testi-role">BS Nursing, 1st Year</div></div></div></div>
           <div className="testi-card"><div className="testi-stars">★★★★★</div><p className="testi-text">"As a student, I needed to plan my duties in advance. This gave me everything — subjects, duty schedule, thesis timeline. Worth every centavo."</p><div className="testi-author"><div className="testi-avatar" style={{background:'#2980b9'}}>MC</div><div><div className="testi-name">Marc Castillo</div><div className="testi-role">BS Nursing, 3rd Year</div></div></div></div>
-          <div className="testi-card"><div className="testi-stars">★★★★★</div><p className="testi-text">"I bought the full 4-year Nursing guide for just ₱19. My friends thought I was joking. Shared it with my whole block. Legit the best study investment ever."</p><div className="testi-author"><div className="testi-avatar" style={{background:'#27ae60'}}>AL</div><div><div className="testi-name">Andrea Lim</div><div className="testi-role">BS Nursing, 2nd Year</div></div></div></div>
+          <div className="testi-card"><div className="testi-stars">★★★★★</div><p className="testi-text">"I bought the full 4-year Nursing guide for just ₱5. My friends thought I was joking. Shared it with my whole block. Legit the best study investment ever."</p><div className="testi-author"><div className="testi-avatar" style={{background:'#27ae60'}}>AL</div><div><div className="testi-name">Andrea Lim</div><div className="testi-role">BS Nursing, 2nd Year</div></div></div></div>
         </div>
       </div>
 
       <div className="cta-banner">
-        <h2>YOUR NURSING JOURNEY<br/>STARTS WITH <span>₱19</span></h2>
+        <h2>YOUR NURSING JOURNEY<br/>STARTS WITH <span>₱5</span></h2>
         <p>Stop stressing. Start preparing. The most affordable study guide worldwide is one click away.</p>
-        <button className="btn-big" onClick={() => openModal()}>📄 Get My PDF Now — ₱19</button>
+        <button className="btn-big" onClick={() => openModal()}>📄 Get My PDF Now — ₱5</button>
         <p className="cta-banner-sub">Instant download · PDF format · No subscription · No hidden fees</p>
       </div>
 
@@ -296,7 +296,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
         <div className="footer-note">© 2026 MedGuide · For nursing students worldwide · Based on universally accepted curricula · Not affiliated with any university</div>
       </footer>
 
-      <button className="float-badge" onClick={() => openModal()}>📄 Get PDF — <span>₱19</span></button>
+      <button className="float-badge" onClick={() => openModal()}>📄 Get PDF — <span>₱5</span></button>
 
       {/* MODAL */}
       <div className={`modal-overlay ${isModalOpen ? 'open' : ''}`} onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}>
