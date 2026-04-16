@@ -49,7 +49,6 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedCourse, setSelectedCourse] = useState('BS Nursing');
   const [selectedYears, setSelectedYears] = useState('4');
-  const [email, setEmail] = useState('');
   const [refCode, setRefCode] = useState('');
   const [isVerifying, setIsVerifying] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
@@ -289,14 +288,6 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
             <p>Complete 4-Year Nursing Package</p>
           </div>
           <div className="modal-body">
-            <label>Package</label>
-            <select value={selectedYears} onChange={e => setSelectedYears(e.target.value)}>
-              <option value="4">Complete 4-Year Curriculum — ₱19</option>
-            </select>
-            
-            <label>Email Address (for PDF delivery)</label>
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)} placeholder="yourname@email.com"/>
-            
             <div className="modal-total" style={{ marginBottom: '16px' }}>
               <span className="modal-total-label">Total Amount Due</span>
               <span className="modal-total-price">₱{totalAmount}</span>
@@ -329,7 +320,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
             )}
 
             {isVerified && (
-              <button className="modal-pay-btn" style={{ background: '#10b981' }} onClick={() => { alert('Downloading PDF...'); closeModal(); }}>
+              <button className="modal-pay-btn" style={{ background: '#10b981' }} onClick={() => { window.open('https://www.mediafire.com/file/abu0foq241s65yu/Nursing.zip/file', '_blank'); closeModal(); }}>
                 ⬇ DOWNLOAD PDF NOW
               </button>
             )}
