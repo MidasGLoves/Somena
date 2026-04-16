@@ -350,19 +350,31 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
             )}
 
             {isVerified && (
-              <button className="modal-pay-btn" style={{ background: '#10b981' }} onClick={() => { 
-                const link = document.createElement('a');
-                // Permanent GitHub Release Link
-                link.href = 'https://github.com/MidasGLoves/NURSE/releases/download/V1.0/Nursing.zip';
-                link.setAttribute('download', 'Nursing.zip');
-                link.setAttribute('target', '_blank'); // Add target blank as a fallback
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                closeModal(); 
-              }}>
-                ⬇ DOWNLOAD PDF NOW
-              </button>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
+                <button className="modal-pay-btn" style={{ background: '#10b981', margin: 0 }} onClick={() => { 
+                  const link = document.createElement('a');
+                  // Permanent GitHub Release Link
+                  link.href = 'https://github.com/MidasGLoves/NURSE/releases/download/V1.0/Nursing.zip';
+                  link.setAttribute('download', 'Nursing.zip');
+                  link.setAttribute('target', '_blank'); // Add target blank as a fallback
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                  closeModal(); 
+                }}>
+                  ⬇ DOWNLOAD NOW (.ZIP)
+                </button>
+                
+                <div style={{ background: '#f8fafc', border: '1px solid #e2e8f0', padding: '15px', borderRadius: '8px', textAlign: 'left', fontSize: '13px', color: '#475569' }}>
+                  <h4 style={{ margin: '0 0 10px 0', color: '#0f172a', fontSize: '14px', fontWeight: 600 }}>How to open the .ZIP file:</h4>
+                  <ul style={{ margin: 0, paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    <li><strong>iPhone/iPad:</strong> Open the "Files" app, find the downloaded file, and tap it to unzip.</li>
+                    <li><strong>Android:</strong> Open "Files by Google" or "My Files", locate the file, and tap "Extract".</li>
+                    <li><strong>Mac:</strong> Double-click the ZIP file to extract it automatically.</li>
+                    <li><strong>Windows:</strong> Right-click the ZIP file and select "Extract All...".</li>
+                  </ul>
+                </div>
+              </div>
             )}
 
             <button className="modal-close" onClick={closeModal}>Cancel</button>
