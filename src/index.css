@@ -31,7 +31,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .hero { padding: 80px 60px 60px; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center; }
 .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: #fef3c7; border: 1px solid #f5c842; color: #92400e; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; margin-bottom: 24px; }
 .hero-badge::before { content: '★'; font-size: 10px; color: var(--gold); }
-.hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(52px,7vw,92px); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 20px; }
+.hero h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(42px,9vw,92px); line-height: 0.95; letter-spacing: 0.02em; margin-bottom: 20px; }
 .hero h1 .accent { color: var(--red); }
 .hero h1 .price-inline { background: var(--ink); color: var(--gold2); padding: 0 12px; display: inline-block; }
 .hero-sub { font-size: 18px; color: var(--muted); font-weight: 300; max-width: 480px; margin-bottom: 36px; line-height: 1.7; }
@@ -189,16 +189,33 @@ footer { background: var(--ink); padding: 32px 60px; display: flex; justify-cont
 /* RESPONSIVE */
 @media (max-width: 900px) {
   nav { padding: 14px 20px; }
-  .hero { grid-template-columns: 1fr; padding: 40px 20px; gap: 32px; }
+  .hero { grid-template-columns: 1fr; padding: 40px 20px 20px; gap: 32px; }
   .section, .courses-section { padding: 50px 20px; }
   .why-strip { padding: 40px 20px; }
   .why-inner, .how-steps, .testi-grid { grid-template-columns: 1fr; gap: 24px; }
   .how-step, .how-step:nth-child(2), .how-step:last-child { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 0; }
-  .how-step:last-child { border-bottom: none; }
+  .how-step:last-child { border-bottom: none; padding-bottom: 0; }
   .obj-inner { grid-template-columns: repeat(2,1fr); }
   .obj-strip { padding: 32px 20px; }
   .cta-banner { padding: 60px 20px; }
   footer { padding: 24px 20px; flex-direction: column; text-align: center; }
   .float-badge { bottom: 16px; right: 16px; }
   .courses-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 500px) {
+  .hero-actions { flex-direction: column; width: 100%; align-items: stretch; }
+  .btn-primary { width: 100%; text-align: center; }
+  .btn-secondary { width: 100%; text-align: center; padding: 12px 0; border: none; text-decoration: underline; }
+  .hero-card { padding: 24px; }
+  .hero-card-price { font-size: 60px; }
+  .obj-inner { grid-template-columns: 1fr; gap: 24px; }
+  .course-card-footer { flex-direction: column; gap: 12px; align-items: stretch; text-align: center; }
+  .buy-all-btn { width: 100%; }
+  .btn-big { width: 100%; padding: 16px 20px; font-size: 20px; }
+  .cta-banner h2 { font-size: clamp(36px, 10vw, 42px); }
+  .modal-body { padding: 20px; }
+  .modal-header { padding: 20px; }
+  .nav-logo { font-size: 20px; }
+  .nav-cta { padding: 8px 16px; font-size: 14px; }
 }
