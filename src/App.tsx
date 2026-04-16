@@ -163,20 +163,25 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
         <h2 style={{ fontSize: '32px', fontWeight: 800, color: '#0f172a', marginBottom: '10px' }}>Sneak Peek Inside</h2>
         <p style={{ fontSize: '18px', color: '#64748b', marginBottom: '40px', maxWidth: '600px', margin: '0 auto 40px auto' }}>Take a look at the high-quality, easy-to-read format of our nursing guide.</p>
         
-        <div className="preview-gallery" style={{ display: 'flex', gap: '20px', justifyContent: 'center', flexWrap: 'wrap', maxWidth: '1200px', margin: '0 auto' }}>
-          {/* Placeholder images - we will replace these with real images later */}
-          <div style={{ width: '400px', height: '225px', background: '#e2e8f0', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
-            <span style={{ padding: '20px' }}>Upload your image to the <b>public</b> folder and tell me the name!</span>
-          </div>
-          <div style={{ width: '400px', height: '225px', background: '#e2e8f0', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
-            <span style={{ padding: '20px' }}>Upload your image to the <b>public</b> folder and tell me the name!</span>
-          </div>
-          <div style={{ width: '400px', height: '225px', background: '#e2e8f0', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
-            <span style={{ padding: '20px' }}>Upload your image to the <b>public</b> folder and tell me the name!</span>
-          </div>
-          <div style={{ width: '400px', height: '225px', background: '#e2e8f0', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#94a3b8', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)', overflow: 'hidden' }}>
-            <span style={{ padding: '20px' }}>Upload your image to the <b>public</b> folder and tell me the name!</span>
-          </div>
+        <div className="preview-gallery" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', justifyContent: 'center', maxWidth: '1200px', margin: '0 auto' }}>
+          <img src="https://i.postimg.cc/cgfNd2Gn/Screenshot-2026-04-16-115210.png" alt="Sneak Peek 1" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/JHmC0xRb/Screenshot-2026-04-16-115235.png" alt="Sneak Peek 2" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/V01Pvgz4/Screenshot-2026-04-16-115255.png" alt="Sneak Peek 3" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/8fDgc4TH/Screenshot-2026-04-16-115310.png" alt="Sneak Peek 4" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/D4F3067r/Screenshot-2026-04-16-115326.png" alt="Sneak Peek 5" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/tnyGJk9r/Screenshot-2026-04-16-115338.png" alt="Sneak Peek 6" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/rRc2sjqf/Screenshot-2026-04-16-122152.png" alt="Sneak Peek 7" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/D4F3067p/Screenshot-2026-04-16-122220.png" alt="Sneak Peek 8" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/T5Gv10TH/Screenshot-2026-04-16-122242.png" alt="Sneak Peek 9" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/D4gkXGzP/Screenshot-2026-04-16-122311.png" alt="Sneak Peek 10" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/m1wfH9rS/Screenshot-2026-04-16-122329.png" alt="Sneak Peek 11" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/kRc3bS5s/Screenshot-2026-04-16-122349.png" alt="Sneak Peek 12" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/gLDFZh0g/Screenshot-2026-04-16-122412.png" alt="Sneak Peek 13" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/30B5vGwS/Screenshot-2026-04-16-122451.png" alt="Sneak Peek 14" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/hQrWdmGZ/Screenshot-2026-04-16-122508.png" alt="Sneak Peek 15" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/ctmyn3J5/Screenshot-2026-04-16-122534.png" alt="Sneak Peek 16" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/zHjZghfM/Screenshot-2026-04-16-122555.png" alt="Sneak Peek 17" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
+          <img src="https://i.postimg.cc/p5ZbFjd3/Screenshot-2026-04-16-134325.png" alt="Sneak Peek 18" style={{ width: '100%', height: 'auto', borderRadius: '12px', boxShadow: '0 10px 25px -5px rgba(0,0,0,0.1)' }} referrerPolicy="no-referrer" />
         </div>
       </div>
 
