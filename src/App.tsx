@@ -77,11 +77,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
 
   const handleVerify = () => {
     if (!selectedCourse) {
-      alert('Piliin muna ang iyong course!');
-      return;
-    }
-    if (!email || !email.includes('@')) {
-      alert('Maglagay ng valid email address para matanggap ang iyong PDF.');
+      alert('Please select your course first!');
       return;
     }
 
