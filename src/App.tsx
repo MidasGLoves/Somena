@@ -109,7 +109,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
   const totalAmount = 5;
   const freeDay = isFreeDay();
   const priceDisplay = freeDay ? "FREE" : "₱5";
-  const tickerText = freeDay ? `✦ FREE EVERY WEEKEND ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ✦ UNIVERSALLY ACCEPTED CURRICULUM ` : `✦ ONLY ₱5 FOR ALL 4 YEARS ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ✦ UNIVERSALLY ACCEPTED CURRICULUM ✦ BOARD EXAM READY ✦ OVER 10,000 STUDENTS SERVED `;
+  const tickerText = freeDay ? `✦ FREE ON WEEKENDS AND HOLIDAYS ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ` : `✦ ONLY ₱5 FOR ALL 4 YEARS ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ✦ UNIVERSALLY ACCEPTED CURRICULUM ✦ BOARD EXAM READY ✦ OVER 10,000 STUDENTS SERVED `;
 
   const toggleDrawer = (id: string) => {
     setActiveDrawer(prev => prev === id ? null : id);
@@ -175,7 +175,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
     <>
       <div className="ticker">
         <div className="ticker-track">
-          <span>✦ ONLY ₱5 FOR ALL 4 YEARS</span><span>✦ INSTANT PDF DOWNLOAD</span><span>✦ NURSING CURRICULUM</span><span>✦ UNIVERSALLY ACCEPTED CURRICULUM</span><span>✦ BOARD EXAM READY</span><span>✦ OVER 10,000 STUDENTS SERVED</span><span>✦ ONLY ₱5 FOR ALL 4 YEARS</span><span>✦ INSTANT PDF DOWNLOAD</span><span>✦ NURSING CURRICULUM</span><span>✦ UNIVERSALLY ACCEPTED CURRICULUM</span><span>✦ BOARD EXAM READY</span><span>✦ OVER 10,000 STUDENTS SERVED</span>
+          <span>{tickerText}</span><span>{tickerText}</span><span>{tickerText}</span><span>{tickerText}</span>
         </div>
       </div>
 
@@ -186,10 +186,11 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
 
       <div className="hero">
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div className="hero-badge">FREE ON WEEKENDS AND HOLIDAYS</div>
           <h1 style={{ marginTop: '0', fontSize: 'clamp(42px, 8vw, 84px)', lineHeight: '0.95', color: '#0f172a' }}>THE COMPLETE <span className="accent" style={{color: '#ef4444'}}>NURSING</span> ROADMAP</h1>
           <p className="hero-sub" style={{ margin: '0 auto 0', color: '#64748b' }}>A clean, semester-by-semester breakdown from 1st year to your Board Exam. See exactly what you'll be learning below.</p>
           <div className="hero-actions" style={{ justifyContent: 'center', marginTop: '30px' }}>
-            <button className="btn-primary" onClick={() => openModal()}>📄 Download My PDF Now {freeDay ? '- FREE' : ''}</button>
+            <button className="btn-primary" onClick={() => openModal()}>Download My PDF Now {freeDay ? '- FREE' : ''}</button>
           </div>
         </div>
       </div>
@@ -259,10 +260,34 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
 
       <div className="obj-strip">
         <div className="obj-inner">
-          <div><div className="obj-icon">🔒</div><div className="obj-title">100% Secure Access</div><div className="obj-desc">Protected by end-to-end encryption. We never store your details.</div></div>
-          <div><div className="obj-icon">📲</div><div className="obj-title">Works on Any Device</div><div className="obj-desc">PDF opens on your phone, tablet, or laptop. Readable offline anytime.</div></div>
-          <div><div className="obj-icon">🎯</div><div className="obj-title">Universally Accepted</div><div className="obj-desc">Based on generally accepted lessons taught on each level nationwide and worldwide.</div></div>
-          <div><div className="obj-icon">💬</div><div className="obj-title">Wrong guide? We'll fix it</div><div className="obj-desc">Accidentally bought the wrong guide? Message us and we'll send the correct one free.</div></div>
+          <div>
+            <div className="obj-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <div className="obj-title">100% Secure Access</div>
+            <div className="obj-desc">Protected by end-to-end encryption. We never store your details.</div>
+          </div>
+          <div>
+            <div className="obj-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+            </div>
+            <div className="obj-title">Works on Any Device</div>
+            <div className="obj-desc">PDF opens on your phone, tablet, or laptop. Readable offline anytime.</div>
+          </div>
+          <div>
+            <div className="obj-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+            </div>
+            <div className="obj-title">Universally Accepted</div>
+            <div className="obj-desc">Based on generally accepted lessons taught on each level nationwide and worldwide.</div>
+          </div>
+          <div>
+            <div className="obj-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <div className="obj-title">Wrong guide? We'll fix it</div>
+            <div className="obj-desc">Accidentally bought the wrong guide? Message us and we'll send the correct one free.</div>
+          </div>
         </div>
       </div>
 
@@ -279,7 +304,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
       <div className="cta-banner">
         <h2>YOUR NURSING JOURNEY<br/>STARTS {freeDay ? 'FOR FREE' : 'WITH ₱5'}</h2>
         <p>Stop stressing. Start preparing. The most affordable study guide worldwide is one click away.</p>
-        <button className="btn-big" onClick={() => openModal()}>📄 Get My PDF Now — {priceDisplay}</button>
+        <button className="btn-big" onClick={() => openModal()}>Get My PDF Now — {priceDisplay}</button>
         <p className="cta-banner-sub">Instant download · PDF format · No subscription · No hidden fees</p>
       </div>
 
@@ -288,7 +313,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
         <div className="footer-note">© 2026 MedGuide · For nursing students worldwide · Based on universally accepted curricula · Not affiliated with any university</div>
       </footer>
 
-      <button className="float-badge" onClick={() => openModal()}>📄 Get PDF — <span>{priceDisplay}</span></button>
+      <button className="float-badge" onClick={() => openModal()}>Get PDF — <span>{priceDisplay}</span></button>
 
       {/* MODAL */}
       <div className={`modal-overlay ${isModalOpen ? 'open' : ''}`} onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}>
@@ -326,7 +351,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
             {freeDay && (
               <div style={{ background: '#ecfdf5', padding: '16px', borderRadius: '8px', marginBottom: '20px', border: '1px solid #a7f3d0' }}>
                 <p style={{ fontSize: '15px', color: '#065f46', margin: 0, fontWeight: 600, textAlign: 'center' }}>
-                  ✨ Happy Free Day! Your guide is completely free today. Enjoy! ✨
+                  Happy Free Day! Your guide is completely free today. Enjoy!
                 </p>
               </div>
             )}
