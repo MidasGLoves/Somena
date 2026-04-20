@@ -28,8 +28,8 @@ const PREVIEW_IMAGES = [
 
 function isFreeDay() {
   const date = new Date();
-  const day = date.getDay(); // 0 is Sunday, 6 is Saturday
-  if (day === 0 || day === 6) {
+  const day = date.getDay(); // 0 is Sunday, 1 is Monday, 2 is Tuesday, 3 is Wed, 4 is Thu, 5 is Fri, 6 is Sat
+  if (day === 1 || day === 3 || day === 5) { // Mon, Wed, Fri
     return true;
   }
   // List of holidays (MM-DD)
@@ -186,7 +186,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
 
       <div className="hero">
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div className="hero-badge">FREE ON WEEKENDS AND HOLIDAYS</div>
+          <div className="hero-badge">FREE ON MON, WED, FRI AND HOLIDAYS</div>
           <h1 style={{ marginTop: '0', fontSize: 'clamp(42px, 8vw, 84px)', lineHeight: '0.95', color: '#0f172a' }}>THE COMPLETE <span className="accent" style={{color: '#ef4444'}}>NURSING</span> ROADMAP</h1>
           <p className="hero-sub" style={{ margin: '0 auto 0', color: '#64748b' }}>A clean, semester-by-semester breakdown from 1st year to your Board Exam. See exactly what you'll be learning below.</p>
           <div className="hero-actions" style={{ justifyContent: 'center', marginTop: '30px' }}>
@@ -242,7 +242,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
       <div className="why-strip">
         <div className="why-inner">
           <div className="why-item"><div className="why-num">100%</div><div className="why-title">Nursing Focused</div><div className="why-desc">Tailored specifically for Nursing students.</div></div>
-          <div className="why-item"><div className="why-num">{priceDisplay}</div><div className="why-title">Full Access</div><div className="why-desc">That's cheaper than a single textbook. Get the entire 4-year breakdown {freeDay ? 'completely free this weekend.' : 'for just five pesos.'}</div></div>
+          <div className="why-item"><div className="why-num">{priceDisplay}</div><div className="why-title">Full Access</div><div className="why-desc">That's cheaper than a single textbook. Get the entire 4-year breakdown {freeDay ? 'completely free today.' : 'for just five pesos.'}</div></div>
         </div>
       </div>
 
@@ -252,7 +252,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
           <div className="section-title">Simple. Fast. Done.</div>
           <div className="how-steps">
             <div className="how-step"><div className="step-num">01</div><div className="step-title">Get the guide</div><div className="step-desc">Get the complete 4-year nursing curriculum guide {freeDay ? 'for absolutely free today' : 'for a one-time payment of ₱5'}.</div></div>
-            <div className="how-step"><div className="step-num">02</div><div className="step-title">{freeDay ? 'Skip the payment' : 'Complete your ₱5 payment'}</div><div className="step-desc">{freeDay ? 'Enjoy the free access this weekend/holiday immediately.' : 'Pay via GCash. Secure, instant, and officially receipted.'}</div></div>
+            <div className="how-step"><div className="step-num">02</div><div className="step-title">{freeDay ? 'Skip the payment' : 'Complete your ₱5 payment'}</div><div className="step-desc">{freeDay ? 'Enjoy the free access today immediately.' : 'Pay via GCash. Secure, instant, and officially receipted.'}</div></div>
             <div className="how-step"><div className="step-num">03</div><div className="step-title">Receive your PDF instantly</div><div className="step-desc">Download your complete curriculum guide immediately{freeDay ? '' : ' after payment'}. Print it or keep it on your phone.</div></div>
           </div>
         </div>
