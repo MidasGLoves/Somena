@@ -26,6 +26,29 @@ const PREVIEW_IMAGES = [
   "https://i.imgur.com/Cw1FgaA.png"
 ];
 
+function isFreeDay() {
+  const date = new Date();
+  const day = date.getDay(); // 0 is Sunday, 6 is Saturday
+  if (day === 0 || day === 6) {
+    return true;
+  }
+  // List of holidays (MM-DD)
+  const holidays = [
+    '01-01', // New Year's Day
+    '12-25', // Christmas
+    '12-31', // New Year's Eve
+    // Add more holidays here as needed
+  ];
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  const formattedDate = `${month}-${d}`;
+  
+  if (holidays.includes(formattedDate)) {
+    return true;
+  }
+  return false;
+}
+
 function SecretPage({ onBack }: { onBack: () => void }) {
   const codes = JSON.parse(localStorage.getItem('refCodes') || '[]');
 
@@ -84,6 +107,9 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
   }, []);
 
   const totalAmount = 5;
+  const freeDay = isFreeDay();
+  const priceDisplay = freeDay ? "FREE" : "₱5";
+  const tickerText = freeDay ? `✦ FREE EVERY WEEKEND ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ✦ UNIVERSALLY ACCEPTED CURRICULUM ` : `✦ ONLY ₱5 FOR ALL 4 YEARS ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ✦ UNIVERSALLY ACCEPTED CURRICULUM ✦ BOARD EXAM READY ✦ OVER 10,000 STUDENTS SERVED `;
 
   const toggleDrawer = (id: string) => {
     setActiveDrawer(prev => prev === id ? null : id);
@@ -95,8 +121,14 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
     }
     setSelectedYears(years);
     setIsModalOpen(true);
-    setIsVerifying(false);
-    setIsVerified(false);
+    // If it's a free day, bypass everything directly to verified
+    if (freeDay) {
+      setIsVerifying(false);
+      setIsVerified(true);
+    } else {
+      setIsVerifying(false);
+      setIsVerified(false);
+    }
     setRefCode('');
   };
 
@@ -149,40 +181,41 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
 
       <nav>
         <div className="nav-logo">MedGuide</div>
-        <button className="nav-cta" onClick={() => openModal()}>Get My Guide — ₱5</button>
+        <button className="nav-cta" onClick={() => openModal()}>Get My Guide — {priceDisplay}</button>
       </nav>
 
       <div className="hero">
-        <div>
-          <div className="hero-badge">The most comprehensive nursing study guide</div>
-          <h1>STOP<br/>GUESSING<br/>YOUR <span className="accent" style={{color: '#ef4444'}}>NURSING</span><br/>JOURNEY FOR <span className="price-inline">₱5</span></h1>
-          <p className="hero-sub">Get the <strong>complete semester-by-semester lesson guide</strong> for Nursing. Know exactly what to expect — from 1st year to your Board Exam.</p>
-          <p className="hero-sub" style={{color: '#10b981', fontWeight: 600, marginTop: '-20px'}}>⚡ Highly optimized for quick learning in a short period of time. Perfect for your exam preparations!</p>
-          <div className="hero-actions">
-            <button className="btn-primary" onClick={() => openModal()}>📄 Download My PDF Now</button>
-            <button className="btn-secondary" onClick={() => document.getElementById('courses')?.scrollIntoView({behavior:'smooth'})}>Browse curriculum ↓</button>
-          </div>
-          <div className="hero-proof">
-            <div className="avatars">
-              <span style={{background:'#e74c3c'}}>JR</span><span style={{background:'#3498db'}}>AC</span><span style={{background:'#27ae60'}}>MB</span><span style={{background:'#9b59b6'}}>LS</span>
-            </div>
-            <p className="hero-proof-text">Trusted by <strong>10,000+</strong> Nursing Students this semester</p>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <h1 style={{ marginTop: '0', fontSize: 'clamp(42px, 8vw, 84px)', lineHeight: '0.95', color: '#0f172a' }}>THE COMPLETE <span className="accent" style={{color: '#ef4444'}}>NURSING</span> ROADMAP</h1>
+          <p className="hero-sub" style={{ margin: '0 auto 0', color: '#64748b' }}>A clean, semester-by-semester breakdown from 1st year to your Board Exam. See exactly what you'll be learning below.</p>
+          <div className="hero-actions" style={{ justifyContent: 'center', marginTop: '30px' }}>
+            <button className="btn-primary" onClick={() => openModal()}>📄 Download My PDF Now {freeDay ? '- FREE' : ''}</button>
           </div>
         </div>
-        <div className="hero-card">
-          <div className="hero-card-label">What you get inside</div>
-          <div className="hero-card-price"><sub>₱</sub>5<sub style={{fontSize:'18px',opacity:0.5}}>/complete</sub></div>
-          <div className="hero-card-note">One-time payment for the complete 4-year guide</div>
-          <hr className="hero-card-divider"/>
-          <ul className="hero-card-features">
-            <li>Optimized for quick learning & exams</li>
-            <li>Clinical duty &amp; internship guide</li>
-            <li>Subject descriptions &amp; goals</li>
-            <li>Elective &amp; specialization options</li>
-            <li>Printable &amp; mobile-friendly PDF</li>
-            <li>Universally accepted curriculum (Nationwide & Worldwide)</li>
-          </ul>
-          <button className="hero-card-btn" onClick={() => openModal()}>GET THE COMPLETE GUIDE →</button>
+      </div>
+
+      <div className="courses-section" id="courses" style={{ paddingTop: '10px', paddingBottom: '60px' }}>
+        <div className="courses-inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px', alignItems: 'start', width: '100%', maxWidth: '1200px', textAlign: 'left' }}>
+            {COURSES[0].years.map((yr, yi) => (
+              <div key={yi} style={{ border: `1px solid ${COURSES[0].color}20`, borderRadius: '12px', overflow: 'hidden', background: '#ffffff', boxShadow: '0 4px 20px rgba(0,0,0,0.03)' }}>
+                <div style={{background:COURSES[0].bg, padding: '16px 20px', borderBottom: `1px solid ${COURSES[0].color}15` }}>
+                  <span style={{color:COURSES[0].color, fontFamily: "'Bebas Neue', sans-serif", fontSize: '20px', letterSpacing: '0.04em'}}>{yr.label}</span>
+                </div>
+                {yr.sems.map((sem, si) => (
+                  <div key={si} style={{ padding: '16px 20px' }}>
+                    <div style={{ fontSize: '11px', color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '12px', paddingBottom: '8px', borderBottom: '1px dashed #e2e8f0' }}>{sem.s}</div>
+                    {sem.l.map((lesson, li) => (
+                      <div key={li} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '10px', fontSize: '13px', lineHeight: '1.45', color: '#334155' }}>
+                        <div style={{ background:`${COURSES[0].color}50`, width: '4px', height: '4px', borderRadius: '50%', marginTop: '7px', flexShrink: 0 }}></div>
+                        <span>{lesson}</span>
+                      </div>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -208,53 +241,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
       <div className="why-strip">
         <div className="why-inner">
           <div className="why-item"><div className="why-num">100%</div><div className="why-title">Nursing Focused</div><div className="why-desc">Tailored specifically for Nursing students.</div></div>
-          <div className="why-item"><div className="why-num">₱5</div><div className="why-title">Full Access</div><div className="why-desc">That's cheaper than a single textbook. Get the entire 4-year breakdown for just five pesos.</div></div>
-        </div>
-      </div>
-
-      <div className="courses-section" id="courses">
-        <div className="courses-inner" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
-          <div className="section-label">Nursing Curriculum</div>
-          <div className="section-title">Get The Complete Guide.<br/>All 4 Years Included.</div>
-          <p className="section-sub" style={{marginTop:'12px', maxWidth: '600px'}}>Get the complete 4-year curriculum for only ₱5.</p>
-          
-          <div className="courses-grid" style={{ display: 'flex', justifyContent: 'center', width: '100%', maxWidth: '1200px' }}>
-            {COURSES.map((c, ci) => (
-              <div key={ci} className="course-card" style={{ width: '100%', textAlign: 'left' }}>
-                <div className="course-card-top">
-                  <div className="course-name">{c.name}</div>
-                  <div className="course-tag" style={{background:c.bg, color:c.color}}>{c.tag}</div>
-                </div>
-                <div className="course-card-body">
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', alignItems: 'start' }}>
-                    {c.years.map((yr, yi) => (
-                      <div key={yi} style={{ border: `1px solid ${c.color}40`, borderRadius: '10px', overflow: 'hidden', background: '#f8fafc' }}>
-                        <div style={{background:c.bg, padding: '12px 16px', borderBottom: `1px solid ${c.color}20` }}>
-                          <span style={{color:c.color, fontFamily: "'Bebas Neue', sans-serif", fontSize: '18px', letterSpacing: '0.04em'}}>{yr.label}</span>
-                        </div>
-                        {yr.sems.map((sem, si) => (
-                          <div key={si} style={{ padding: '12px 16px' }}>
-                            <div style={{ fontSize: '11px', color: '#64748b', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '10px', paddingBottom: '6px', borderBottom: '1px dashed #cbd5e1' }}>{sem.s}</div>
-                            {sem.l.map((lesson, li) => (
-                              <div key={li} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', marginBottom: '8px', fontSize: '13px', lineHeight: '1.4', color: '#334155' }}>
-                                <div style={{ background:`${c.color}88`, width: '5px', height: '5px', borderRadius: '50%', marginTop: '6px', flexShrink: 0 }}></div>
-                                <span>{lesson}</span>
-                              </div>
-                            ))}
-                          </div>
-                        ))}
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="course-card-footer" style={{ marginTop: '24px', paddingTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div className="total-price" style={{ fontSize: '15px' }}>Complete 4-year guide: <strong style={{ fontSize: '18px' }}>₱5</strong></div>
-                    <button className="buy-all-btn" style={{ padding: '12px 24px', fontSize: '15px' }} onClick={() => openModal(c.name, '4')}>Get Complete Guide →</button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <div className="why-item"><div className="why-num">{priceDisplay}</div><div className="why-title">Full Access</div><div className="why-desc">That's cheaper than a single textbook. Get the entire 4-year breakdown {freeDay ? 'completely free this weekend.' : 'for just five pesos.'}</div></div>
         </div>
       </div>
 
@@ -263,16 +250,16 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
           <div className="section-label">The Process</div>
           <div className="section-title">Simple. Fast. Done.</div>
           <div className="how-steps">
-            <div className="how-step"><div className="step-num">01</div><div className="step-title">Get the guide</div><div className="step-desc">Get the complete 4-year nursing curriculum guide for a one-time payment of ₱5.</div></div>
-            <div className="how-step"><div className="step-num">02</div><div className="step-title">Complete your ₱5 payment</div><div className="step-desc">Pay via GCash. Secure, instant, and officially receipted.</div></div>
-            <div className="how-step"><div className="step-num">03</div><div className="step-title">Receive your PDF instantly</div><div className="step-desc">Download your complete curriculum guide immediately after payment. Print it or keep it on your phone.</div></div>
+            <div className="how-step"><div className="step-num">01</div><div className="step-title">Get the guide</div><div className="step-desc">Get the complete 4-year nursing curriculum guide {freeDay ? 'for absolutely free today' : 'for a one-time payment of ₱5'}.</div></div>
+            <div className="how-step"><div className="step-num">02</div><div className="step-title">{freeDay ? 'Skip the payment' : 'Complete your ₱5 payment'}</div><div className="step-desc">{freeDay ? 'Enjoy the free access this weekend/holiday immediately.' : 'Pay via GCash. Secure, instant, and officially receipted.'}</div></div>
+            <div className="how-step"><div className="step-num">03</div><div className="step-title">Receive your PDF instantly</div><div className="step-desc">Download your complete curriculum guide immediately{freeDay ? '' : ' after payment'}. Print it or keep it on your phone.</div></div>
           </div>
         </div>
       </div>
 
       <div className="obj-strip">
         <div className="obj-inner">
-          <div><div className="obj-icon">🔒</div><div className="obj-title">100% Secure Payment</div><div className="obj-desc">Protected by end-to-end encryption. We never store card details.</div></div>
+          <div><div className="obj-icon">🔒</div><div className="obj-title">100% Secure Access</div><div className="obj-desc">Protected by end-to-end encryption. We never store your details.</div></div>
           <div><div className="obj-icon">📲</div><div className="obj-title">Works on Any Device</div><div className="obj-desc">PDF opens on your phone, tablet, or laptop. Readable offline anytime.</div></div>
           <div><div className="obj-icon">🎯</div><div className="obj-title">Universally Accepted</div><div className="obj-desc">Based on generally accepted lessons taught on each level nationwide and worldwide.</div></div>
           <div><div className="obj-icon">💬</div><div className="obj-title">Wrong guide? We'll fix it</div><div className="obj-desc">Accidentally bought the wrong guide? Message us and we'll send the correct one free.</div></div>
@@ -283,16 +270,16 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
         <div className="section-label">Student Reviews</div>
         <div className="section-title">Real Feedback.<br/>Real Students.</div>
         <div className="testi-grid">
-          <div className="testi-card"><div className="testi-stars">★★★★★</div><p className="testi-text">"I haven't even started classes yet, but I already have my entire curriculum planned out. The layout is beautiful and easy to read. Only ₱5?! Incredibly worth it!"</p><div className="testi-author"><div className="testi-avatar" style={{background:'#e74c3c'}}>JR</div><div><div className="testi-name">Jessa Reyes</div><div className="testi-role">BS Nursing, 1st Year</div></div></div></div>
+          <div className="testi-card"><div className="testi-stars">★★★★★</div><p className="testi-text">"I haven't even started classes yet, but I already have my entire curriculum planned out. The layout is beautiful and easy to read. Incredibly worth it!"</p><div className="testi-author"><div className="testi-avatar" style={{background:'#e74c3c'}}>JR</div><div><div className="testi-name">Jessa Reyes</div><div className="testi-role">BS Nursing, 1st Year</div></div></div></div>
           <div className="testi-card"><div className="testi-stars">★★★★★</div><p className="testi-text">"As a student, I needed to plan my duties in advance. This gave me everything — subjects, duty schedule, thesis timeline. Worth every centavo."</p><div className="testi-author"><div className="testi-avatar" style={{background:'#2980b9'}}>MC</div><div><div className="testi-name">Marc Castillo</div><div className="testi-role">BS Nursing, 3rd Year</div></div></div></div>
-          <div className="testi-card"><div className="testi-stars">★★★★★</div><p className="testi-text">"I bought the full 4-year Nursing guide for just ₱5. My friends thought I was joking. Shared it with my whole block. Legit the best study investment ever."</p><div className="testi-author"><div className="testi-avatar" style={{background:'#27ae60'}}>AL</div><div><div className="testi-name">Andrea Lim</div><div className="testi-role">BS Nursing, 2nd Year</div></div></div></div>
+          <div className="testi-card"><div className="testi-stars">★★★★★</div><p className="testi-text">"I bought the full 4-year Nursing guide. My friends thought I was joking. Shared it with my whole block. Legit the best study investment ever."</p><div className="testi-author"><div className="testi-avatar" style={{background:'#27ae60'}}>AL</div><div><div className="testi-name">Andrea Lim</div><div className="testi-role">BS Nursing, 2nd Year</div></div></div></div>
         </div>
       </div>
 
       <div className="cta-banner">
-        <h2>YOUR NURSING JOURNEY<br/>STARTS WITH <span>₱5</span></h2>
+        <h2>YOUR NURSING JOURNEY<br/>STARTS {freeDay ? 'FOR FREE' : 'WITH ₱5'}</h2>
         <p>Stop stressing. Start preparing. The most affordable study guide worldwide is one click away.</p>
-        <button className="btn-big" onClick={() => openModal()}>📄 Get My PDF Now — ₱5</button>
+        <button className="btn-big" onClick={() => openModal()}>📄 Get My PDF Now — {priceDisplay}</button>
         <p className="cta-banner-sub">Instant download · PDF format · No subscription · No hidden fees</p>
       </div>
 
@@ -301,7 +288,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
         <div className="footer-note">© 2026 MedGuide · For nursing students worldwide · Based on universally accepted curricula · Not affiliated with any university</div>
       </footer>
 
-      <button className="float-badge" onClick={() => openModal()}>📄 Get PDF — <span>₱5</span></button>
+      <button className="float-badge" onClick={() => openModal()}>📄 Get PDF — <span>{priceDisplay}</span></button>
 
       {/* MODAL */}
       <div className={`modal-overlay ${isModalOpen ? 'open' : ''}`} onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}>
@@ -311,38 +298,50 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
             <p>Complete 4-Year Nursing Package</p>
           </div>
           <div className="modal-body">
-            <div className="modal-total" style={{ marginBottom: '16px' }}>
-              <span className="modal-total-label">Total Amount Due</span>
-              <span className="modal-total-price">₱{totalAmount}</span>
-            </div>
+            {!freeDay && (
+              <>
+                <div className="modal-total" style={{ marginBottom: '16px' }}>
+                  <span className="modal-total-label">Total Amount Due</span>
+                  <span className="modal-total-price">₱{totalAmount}</span>
+                </div>
 
-            <div style={{ background: '#eff6ff', padding: '16px', borderRadius: '8px', marginBottom: '20px', border: '1px solid #bfdbfe' }}>
-              <p style={{ fontSize: '13px', color: '#1e3a8a', marginBottom: '12px', fontWeight: 500, lineHeight: 1.5 }}>
-                Please send exactly <strong>₱{totalAmount}</strong> to GCash number:<br/>
-                <span style={{ fontSize: '22px', fontWeight: 800, letterSpacing: '1px', display: 'block', marginTop: '4px' }}>09770950502</span>
-              </p>
-              <label style={{ color: '#1e3a8a', marginBottom: '4px' }}>GCash Reference Code (13 digits)</label>
-              <input 
-                type="text" 
-                value={refCode} 
-                onChange={e => setRefCode(e.target.value)} 
-                placeholder="e.g. 1000000000000" 
-                style={{ marginBottom: 0, border: '1px solid #93c5fd', background: 'white' }}
-                maxLength={13}
-              />
-            </div>
+                <div style={{ background: '#eff6ff', padding: '16px', borderRadius: '8px', marginBottom: '20px', border: '1px solid #bfdbfe' }}>
+                  <p style={{ fontSize: '13px', color: '#1e3a8a', marginBottom: '12px', fontWeight: 500, lineHeight: 1.5 }}>
+                    Please send exactly <strong>₱{totalAmount}</strong> to GCash number:<br/>
+                    <span style={{ fontSize: '22px', fontWeight: 800, letterSpacing: '1px', display: 'block', marginTop: '4px' }}>09770950502</span>
+                  </p>
+                  <label style={{ color: '#1e3a8a', marginBottom: '4px' }}>GCash Reference Code (13 digits)</label>
+                  <input 
+                    type="text" 
+                    value={refCode} 
+                    onChange={e => setRefCode(e.target.value)} 
+                    placeholder="e.g. 1000000000000" 
+                    style={{ marginBottom: 0, border: '1px solid #93c5fd', background: 'white' }}
+                    maxLength={13}
+                  />
+                </div>
+              </>
+            )}
 
-            {!isVerifying && !isVerified && (
+            {freeDay && (
+              <div style={{ background: '#ecfdf5', padding: '16px', borderRadius: '8px', marginBottom: '20px', border: '1px solid #a7f3d0' }}>
+                <p style={{ fontSize: '15px', color: '#065f46', margin: 0, fontWeight: 600, textAlign: 'center' }}>
+                  ✨ Happy Free Day! Your guide is completely free today. Enjoy! ✨
+                </p>
+              </div>
+            )}
+
+            {!isVerifying && !isVerified && !freeDay && (
               <button className="modal-pay-btn" onClick={handleVerify}>VERIFY PAYMENT →</button>
             )}
 
-            {isVerifying && (
+            {isVerifying && !freeDay && (
               <button className="modal-pay-btn" style={{ background: '#f59e0b', cursor: 'wait' }} disabled>
                 VERIFYING... ({verifyCountdown}s)
               </button>
             )}
 
-            {isVerified && (
+            {(isVerified || freeDay) && (
               <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                 <button className="modal-pay-btn" style={{ background: '#10b981', margin: 0 }} onClick={() => { 
                   const link = document.createElement('a');
