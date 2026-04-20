@@ -29,7 +29,7 @@ const PREVIEW_IMAGES = [
 function isFreeDay() {
   const date = new Date();
   const day = date.getDay(); // 0 is Sunday, 1 is Monday, 2 is Tuesday, 3 is Wed, 4 is Thu, 5 is Fri, 6 is Sat
-  if (day === 1 || day === 3 || day === 5) { // Mon, Wed, Fri
+  if (day === 1 || day === 4) { // Mon, Thu
     return true;
   }
   // List of holidays (MM-DD)
@@ -109,7 +109,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
   const totalAmount = 5;
   const freeDay = isFreeDay();
   const priceDisplay = freeDay ? "FREE" : "₱5";
-  const tickerText = freeDay ? `✦ FREE ON WEEKENDS AND HOLIDAYS ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ` : `✦ ONLY ₱5 FOR ALL 4 YEARS ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ✦ UNIVERSALLY ACCEPTED CURRICULUM ✦ BOARD EXAM READY ✦ OVER 10,000 STUDENTS SERVED `;
+  const tickerText = freeDay ? `✦ FREE ON MON, THU AND HOLIDAYS ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ` : `✦ ONLY ₱5 FOR ALL 4 YEARS ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ✦ UNIVERSALLY ACCEPTED CURRICULUM ✦ BOARD EXAM READY ✦ OVER 10,000 STUDENTS SERVED `;
 
   const toggleDrawer = (id: string) => {
     setActiveDrawer(prev => prev === id ? null : id);
@@ -186,7 +186,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
 
       <div className="hero">
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div className="hero-badge">FREE ON MON, WED, FRI AND HOLIDAYS</div>
+          <div className="hero-badge">FREE ON MON, THU AND HOLIDAYS</div>
           <h1 style={{ marginTop: '0', fontSize: 'clamp(42px, 8vw, 84px)', lineHeight: '0.95', color: '#0f172a' }}>THE COMPLETE <span className="accent" style={{color: '#ef4444'}}>NURSING</span> ROADMAP</h1>
           <p className="hero-sub" style={{ margin: '0 auto 0', color: '#64748b' }}>A clean, semester-by-semester breakdown from 1st year to your Board Exam. See exactly what you'll be learning below.</p>
           <div className="hero-actions" style={{ justifyContent: 'center', marginTop: '30px' }}>
