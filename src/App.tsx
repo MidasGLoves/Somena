@@ -27,26 +27,7 @@ const PREVIEW_IMAGES = [
 ];
 
 function isFreeDay() {
-  const date = new Date();
-  const day = date.getDay(); // 0 is Sunday, 1 is Monday, 2 is Tuesday, 3 is Wed, 4 is Thu, 5 is Fri, 6 is Sat
-  if (day === 1 || day === 4) { // Mon, Thu
-    return true;
-  }
-  // List of holidays (MM-DD)
-  const holidays = [
-    '01-01', // New Year's Day
-    '12-25', // Christmas
-    '12-31', // New Year's Eve
-    // Add more holidays here as needed
-  ];
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const d = String(date.getDate()).padStart(2, '0');
-  const formattedDate = `${month}-${d}`;
-  
-  if (holidays.includes(formattedDate)) {
-    return true;
-  }
-  return false;
+  return true;
 }
 
 function SecretPage({ onBack }: { onBack: () => void }) {
@@ -109,7 +90,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
   const totalAmount = 5;
   const freeDay = isFreeDay();
   const priceDisplay = freeDay ? "FREE" : "₱5";
-  const tickerText = freeDay ? `✦ FREE ON MON, THU AND HOLIDAYS ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ` : `✦ ONLY ₱5 FOR ALL 4 YEARS ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ✦ UNIVERSALLY ACCEPTED CURRICULUM ✦ BOARD EXAM READY ✦ OVER 10,000 STUDENTS SERVED `;
+  const tickerText = `✦ LAUNCH PROMO: 100% FREE ACCESS ✦ INSTANT PDF DOWNLOAD ✦ NURSING CURRICULUM ✦ UNIVERSALLY ACCEPTED CURRICULUM ✦ BOARD EXAM READY ✦ OVER 10,000 STUDENTS SERVED `;
 
   const toggleDrawer = (id: string) => {
     setActiveDrawer(prev => prev === id ? null : id);
@@ -186,7 +167,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
 
       <div className="hero">
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div className="hero-badge">FREE ON MON, THU AND HOLIDAYS</div>
+          <div className="hero-badge">LAUNCH PROMO: 100% FREE</div>
           <h1 style={{ marginTop: '0', fontSize: 'clamp(42px, 8vw, 84px)', lineHeight: '0.95', color: '#0f172a' }}>THE COMPLETE <span className="accent" style={{color: '#ef4444'}}>NURSING</span> ROADMAP</h1>
           <p className="hero-sub" style={{ margin: '0 auto 0', color: '#64748b' }}>A clean, semester-by-semester breakdown from 1st year to your Board Exam. See exactly what you'll be learning below.</p>
           <div className="hero-actions" style={{ justifyContent: 'center', marginTop: '30px' }}>
@@ -242,7 +223,7 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
       <div className="why-strip">
         <div className="why-inner">
           <div className="why-item"><div className="why-num">100%</div><div className="why-title">Nursing Focused</div><div className="why-desc">Tailored specifically for Nursing students.</div></div>
-          <div className="why-item"><div className="why-num">{priceDisplay}</div><div className="why-title">Full Access</div><div className="why-desc">That's cheaper than a single textbook. Get the entire 4-year breakdown {freeDay ? 'completely free today.' : 'for just five pesos.'}</div></div>
+          <div className="why-item"><div className="why-num">{priceDisplay}</div><div className="why-title">Full Access</div><div className="why-desc">That's cheaper than a single textbook. Get the entire 4-year breakdown {freeDay ? 'completely free during our launch period.' : 'for just five pesos.'}</div></div>
         </div>
       </div>
 
@@ -251,8 +232,8 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
           <div className="section-label">The Process</div>
           <div className="section-title">Simple. Fast. Done.</div>
           <div className="how-steps">
-            <div className="how-step"><div className="step-num">01</div><div className="step-title">Get the guide</div><div className="step-desc">Get the complete 4-year nursing curriculum guide {freeDay ? 'for absolutely free today' : 'for a one-time payment of ₱5'}.</div></div>
-            <div className="how-step"><div className="step-num">02</div><div className="step-title">{freeDay ? 'Skip the payment' : 'Complete your ₱5 payment'}</div><div className="step-desc">{freeDay ? 'Enjoy the free access today immediately.' : 'Pay via GCash. Secure, instant, and officially receipted.'}</div></div>
+            <div className="how-step"><div className="step-num">01</div><div className="step-title">Get the guide</div><div className="step-desc">Get the complete 4-year nursing curriculum guide {freeDay ? 'for absolutely free during our launch' : 'for a one-time payment of ₱5'}.</div></div>
+            <div className="how-step"><div className="step-num">02</div><div className="step-title">{freeDay ? 'Skip the payment' : 'Complete your ₱5 payment'}</div><div className="step-desc">{freeDay ? 'Take advantage of our launch promo and enjoy free access.' : 'Pay via GCash. Secure, instant, and officially receipted.'}</div></div>
             <div className="how-step"><div className="step-num">03</div><div className="step-title">Receive your PDF instantly</div><div className="step-desc">Download your complete curriculum guide immediately{freeDay ? '' : ' after payment'}. Print it or keep it on your phone.</div></div>
           </div>
         </div>
@@ -349,9 +330,9 @@ function MainPage({ onSecret }: { onSecret: () => void }) {
             )}
 
             {freeDay && (
-              <div style={{ background: '#ecfdf5', padding: '16px', borderRadius: '8px', marginBottom: '20px', border: '1px solid #a7f3d0' }}>
+              <div style={{ background: '#ecfdf5', padding: '16px', borderRadius: '8px', margin: '15px 0', border: '1px solid #a7f3d0' }}>
                 <p style={{ fontSize: '15px', color: '#065f46', margin: 0, fontWeight: 600, textAlign: 'center' }}>
-                  Happy Free Day! Your guide is completely free today. Enjoy!
+                  Launch Promo Activated! Your guide is completely free right now. Enjoy!
                 </p>
               </div>
             )}
